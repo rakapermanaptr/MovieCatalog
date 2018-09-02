@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Movie Catalog</string>
+    <string name="lorem_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ut ex quibusdam commodi consectetur cum. Consequuntur repellat accusantium voluptatibus optio alias eligendi nostrum veniam. Eos, voluptas asperiores. Beatae, placeat qui?Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ut ex quibusdam commodi consectetur cum. Consequuntur repellat accusantium voluptatibus optio alias eligendi nostrum veniam. Eos, voluptas asperiores. Beatae, placeat qui?\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Id ut ex quibusdam commodi consectetur cum. Consequuntur repellat accusantium voluptatibus optio alias eligendi nostrum veniam. Eos, voluptas asperiores. Beatae, placeat qui?Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ut ex quibusdam commodi consectetur cum. Consequuntur repellat accusantium voluptatibus optio alias eligendi nostrum veniam. Eos, voluptas asperiores. Beatae, placeat qui?Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ut ex quibusdam commodi consectetur cum. Consequuntur repellat accusantium voluptatibus optio alias eligendi nostrum veniam. Eos, voluptas asperiores. Beatae, placeat qui?</string>
+    <string name="overview">Several years after the demise of Jurassic World, a volcanic eruption threatens the remaining dinosaurs on the island of Isla Nublar. Claire Dearing, the former park manager and founder of the Dinosaur Protection Group, recruits Owen Grady to help prevent the extinction of the dinosaurs once again.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="search_hint">Cari film</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="user_name">Raka Permana Putra</string>
+    <string name="user_gmail">rakapermanaputraa@gmail.com</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="title">Jurasic World</string>
+    <string name="release_date">2015-09-07</string>
+    <string name="average_rate">8.9</string>
+    <string name="overview_">Gambaran</string>
+    <string name="recommendations">Rekomendasi</string>
+    <string name="more">Lebih lanjut</string>
+    <string name="now_playing_movie">Film sedang Bermain</string>
+    <string name="popular_movie">Film populer</string>
+    <string name="upcoming_movie">Film akan datang</string>
+    <string name="username">rakapermanaptr</string>
+    <string name="now_playing">Sedang bermain</string>
+    <string name="popular_on_movie">Populer di Movie</string>
+    <string name="home">Halaman</string>
+    <string name="popular">Populer</string>
+    <string name="upcoming">Akan Datang</string>
+    <string name="search">Cari</string>
+    <string name="share">Kirim</string>
+    <string name="more_popular">Lebih Populer</string>
+    <string name="more_now_playing">Lebih sedang bermain</string>
+    <string name="more_upcoming">Lebih yang akan datang</string>
+
+
+</resources>

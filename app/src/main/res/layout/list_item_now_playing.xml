@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/now_playing_item"
+    android:orientation="vertical"
+    android:layout_width="130dp"
+    android:layout_marginRight="@dimen/nav_header_vertical_spacing"
+    android:layout_marginTop="16dp"
+    android:layout_height="180dp">
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="180dp"
+        tools:src="@drawable/poster"
+        android:scaleType="centerCrop"
+        android:id="@+id/img_poster"/>
+
+</LinearLayout>
