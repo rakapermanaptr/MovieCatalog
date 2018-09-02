@@ -1,9 +1,7 @@
 package com.example.rakapermanaputra.moviewcatalog.network;
 
-import android.os.Build;
-
 import com.example.rakapermanaputra.moviewcatalog.BuildConfig;
-import com.example.rakapermanaputra.moviewcatalog.model.JSONResponse;
+import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,19 +13,19 @@ public interface ApiService {
 
 
     @GET("movie/popular?api_key=" + BuildConfig.API_KEY)
-    Call<JSONResponse> getPopular();
+    Call<MovieItems> getPopular();
 
     @GET("movie/now_playing?api_key=" + BuildConfig.API_KEY)
-    Call<JSONResponse> getNowPlaying();
+    Call<MovieItems> getNowPlaying();
 
     @GET("movie/upcoming?api_key=" + BuildConfig.API_KEY)
-    Call<JSONResponse> getUpcoming();
+    Call<MovieItems> getUpcoming();
 
     @GET("movie/{movie_id}/recommendations?api_key=" + BuildConfig.API_KEY)
-    Call<JSONResponse> getRecommend(@Path("movie_id") String id);
+    Call<MovieItems> getRecommend(@Path("movie_id") String id);
 
     @GET("search/movie?api_key=" + BuildConfig.API_KEY)
-    Call<JSONResponse> getMovie(@Query("query") String query);
+    Call<MovieItems> getMovie(@Query("query") String query);
 
 
 }

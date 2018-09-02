@@ -1,7 +1,6 @@
 package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,7 @@ import android.widget.ImageView;
 
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.adapter.FavoriteAdapter;
-import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ import butterknife.BindView;
  */
 public class FavoriteFragment extends Fragment {
 
-    private ArrayList<MovieItems> movieItems;
+    private ArrayList<Result> movieItems;
     private FavoriteAdapter adapter;
     @BindView(R.id.recyclerViewFavorite)
     RecyclerView recyclerViewFavorite;

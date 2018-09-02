@@ -14,26 +14,27 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.activity.DetailActivity;
-import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHolder> {
-    private ArrayList<MovieItems> upcomingItems;
+    private List<Result> upcomingItems;
     private Context context;
 
     public UpcomingAdapter(Context context) {
         this.context = context;
     }
 
-    public ArrayList<MovieItems> getUpcomingItems() {
+    public List<Result> getUpcomingItems() {
         return upcomingItems;
     }
 
-    public void setUpcomingItems(ArrayList<MovieItems> upcomingItems) {
+    public void setUpcomingItems(List<Result> upcomingItems) {
         this.upcomingItems = upcomingItems;
     }
 
@@ -47,7 +48,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final MovieItems items = upcomingItems.get(position);
+        final Result items = upcomingItems.get(position);
 
         holder.listUpcomingItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,29 +59,32 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
                 intent.hasExtra("title");
                 intent.putExtra("title", items.getTitle());
                 intent.putExtra("id", items.getId());
-                intent.putExtra("release_date", items.getRelease_date());
+                intent.putExtra("release_date", items.getReleaseDate());
                 intent.putExtra("overview", items.getOverview());
-                intent.putExtra("vote_average", items.getVote_average());
-                intent.putExtra("backdrop_path", items.getBackdrop_path());
+                intent.putExtra("vote_average", items.getVoteAverage());
+                intent.putExtra("backdrop_path", items.getBackdropPath());
                 context.startActivity(intent);
             }
         });
 
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w185" + items.getPoster_path())
+                .load("http://image.tmdb.org/t/p/w185" + items.getBackdropPath())
                 .override(130, 180)
                 .into(holder.imgPoster);
+
     }
 
     @Override
     public int getItemCount() {
-        return getUpcomingItems().size()-10;
+        return getUpcomingItems().size() - 10;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.upcoming_item) LinearLayout listUpcomingItem;
-        @BindView(R.id.img_poster) ImageView imgPoster;
+        @BindView(R.id.upcoming_item)
+        LinearLayout listUpcomingItem;
+        @BindView(R.id.img_poster)
+        ImageView imgPoster;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -3,14 +3,10 @@ package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,18 +14,15 @@ import android.widget.Toast;
 
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.activity.MainActivity;
-import com.example.rakapermanaputra.moviewcatalog.adapter.MoreNowPlayingAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.MorePopularAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.NowPlayingAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.PopularAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.SearchAdapter;
-import com.example.rakapermanaputra.moviewcatalog.model.JSONResponse;
 import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
 import com.example.rakapermanaputra.moviewcatalog.network.ApiService;
 import com.example.rakapermanaputra.moviewcatalog.network.RetrofitClientInstance;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +35,7 @@ import retrofit2.Response;
  */
 public class SearchFragment extends Fragment {
 
-    private ArrayList<MovieItems> movieItems;
+    private List<Result> movieList;
     private SearchAdapter adapter;
     private String search;
     @BindView(R.id.recyclerViewSearch)
@@ -78,26 +71,26 @@ public class SearchFragment extends Fragment {
     private void getSearch() {
         Toast.makeText(getContext(), search, Toast.LENGTH_SHORT).show();
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
-        Call<JSONResponse> call = service.getMovie(search);
-        call.enqueue(new Callback<JSONResponse>() {
+        Call<MovieItems> call = service.getMovie(search);
+        call.enqueue(new Callback<MovieItems>() {
             @Override
-            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                JSONResponse jsonResponse = response.body();
-                movieItems = new ArrayList<>(Arrays.asList(jsonResponse.getResults()));
-                for (int i = 0; i < movieItems.size(); i++) {
-                    MovieItems items = movieItems.get(i);
+            public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
+                MovieItems movieItems = response.body();
+                movieList = movieItems.getResults();
+                for (int i = 0; i < SearchFragment.this.movieList.size(); i++) {
+                    Result items = SearchFragment.this.movieList.get(i);
 
                     Log.i("Search Fragment ", "onResponse: movie title : " + items.getTitle());
                 }
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
                 recyclerViewSearch.setLayoutManager(linearLayoutManager);
                 adapter = new SearchAdapter(getContext());
-                adapter.setMovieItems(movieItems);
+                adapter.setMovieItems(SearchFragment.this.movieList);
                 recyclerViewSearch.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<JSONResponse> call, Throwable t) {
+            public void onFailure(Call<MovieItems> call, Throwable t) {
 
             }
         });

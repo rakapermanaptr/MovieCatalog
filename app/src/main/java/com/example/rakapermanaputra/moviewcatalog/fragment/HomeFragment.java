@@ -3,16 +3,12 @@ package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +16,14 @@ import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.adapter.NowPlayingAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.PopularAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.UpcomingAdapter;
-import com.example.rakapermanaputra.moviewcatalog.model.JSONResponse;
 import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
 import com.example.rakapermanaputra.moviewcatalog.network.ApiService;
 import com.example.rakapermanaputra.moviewcatalog.network.RetrofitClientInstance;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +48,7 @@ public class HomeFragment extends Fragment {
     RecyclerView rvNowPlaying;
     @BindView(R.id.rv_upcoming)
     RecyclerView rvUpcoming;
-    private ArrayList<MovieItems> movieItems;
+    private List<Result> movieList;
     private PopularAdapter popularAdapter;
     private NowPlayingAdapter nowPlayingAdapter;
     private UpcomingAdapter upcomingAdapter;
@@ -103,27 +100,28 @@ public class HomeFragment extends Fragment {
 
     private void getPopular() {
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
-        Call<JSONResponse> call = service.getPopular();
-        call.enqueue(new Callback<JSONResponse>() {
+        Call<MovieItems> call = service.getPopular();
+        call.enqueue(new Callback<MovieItems>() {
             @Override
-            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                JSONResponse jsonResponse = response.body();
-                movieItems = new ArrayList<>(Arrays.asList(jsonResponse.getResults()));
-                for (int i = 0; i < movieItems.size(); i++) {
-                    MovieItems items = movieItems.get(i);
+            public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
+                MovieItems movieItems = response.body();
+                movieList = movieItems.getResults();
 
-                    Log.i(TAG, "onResponse: title popular : " + items.getTitle());
+                for (int i = 0; i < movieList.size(); i++) {
+                    Result result = movieList.get(i);
+
+                    Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
                 }
                 rvPopular.setHasFixedSize(true);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 rvPopular.setLayoutManager(linearLayoutManager);
                 popularAdapter = new PopularAdapter(getActivity());
-                popularAdapter.setUpcomingItems(movieItems);
+                popularAdapter.setPopularItems(HomeFragment.this.movieList);
                 rvPopular.setAdapter(popularAdapter);
             }
 
             @Override
-            public void onFailure(Call<JSONResponse> call, Throwable t) {
+            public void onFailure(Call<MovieItems> call, Throwable t) {
 
             }
         });
@@ -131,27 +129,28 @@ public class HomeFragment extends Fragment {
 
     private void getNowPlaying() {
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
-        Call<JSONResponse> call = service.getNowPlaying();
-        call.enqueue(new Callback<JSONResponse>() {
+        Call<MovieItems> call = service.getNowPlaying();
+        call.enqueue(new Callback<MovieItems>() {
             @Override
-            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                JSONResponse jsonResponse = response.body();
-                movieItems = new ArrayList<>(Arrays.asList(jsonResponse.getResults()));
-                for (int i = 0; i < movieItems.size(); i++) {
-                    MovieItems items = movieItems.get(i);
+            public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
+                MovieItems movieItems = response.body();
+                movieList = movieItems.getResults();
 
-                    Log.i(TAG, "onResponse: title now playing : " + items.getTitle());
+                for (int i = 0; i < movieList.size(); i++) {
+                    Result result = movieList.get(i);
+
+                    Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
                 }
                 rvNowPlaying.setHasFixedSize(true);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 rvNowPlaying.setLayoutManager(linearLayoutManager);
                 nowPlayingAdapter = new NowPlayingAdapter(getActivity());
-                nowPlayingAdapter.setNowPlayingItems(movieItems);
+                nowPlayingAdapter.setNowPlayingItems(HomeFragment.this.movieList);
                 rvNowPlaying.setAdapter(nowPlayingAdapter);
             }
 
             @Override
-            public void onFailure(Call<JSONResponse> call, Throwable t) {
+            public void onFailure(Call<MovieItems> call, Throwable t) {
 
             }
         });
@@ -159,27 +158,28 @@ public class HomeFragment extends Fragment {
 
     private void getUpcoming() {
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
-        Call<JSONResponse> call = service.getUpcoming();
-        call.enqueue(new Callback<JSONResponse>() {
+        Call<MovieItems> call = service.getPopular();
+        call.enqueue(new Callback<MovieItems>() {
             @Override
-            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                JSONResponse jsonResponse = response.body();
-                movieItems = new ArrayList<>(Arrays.asList(jsonResponse.getResults()));
-                for (int i = 0; i < movieItems.size(); i++) {
-                    MovieItems items = movieItems.get(i);
+            public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
+                MovieItems movieItems = response.body();
+                movieList = movieItems.getResults();
 
-                    Log.i(TAG, "onResponse: title now playing : " + items.getTitle());
+                for (int i = 0; i < movieList.size(); i++) {
+                    Result result = movieList.get(i);
+
+                    Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
                 }
                 rvUpcoming.setHasFixedSize(true);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 rvUpcoming.setLayoutManager(linearLayoutManager);
                 upcomingAdapter = new UpcomingAdapter(getActivity());
-                upcomingAdapter.setUpcomingItems(movieItems);
+                upcomingAdapter.setUpcomingItems(HomeFragment.this.movieList);
                 rvUpcoming.setAdapter(upcomingAdapter);
             }
 
             @Override
-            public void onFailure(Call<JSONResponse> call, Throwable t) {
+            public void onFailure(Call<MovieItems> call, Throwable t) {
 
             }
         });

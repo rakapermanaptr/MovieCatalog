@@ -3,18 +3,9 @@ package com.example.rakapermanaputra.moviewcatalog.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,35 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.rakapermanaputra.moviewcatalog.R;
-import com.example.rakapermanaputra.moviewcatalog.adapter.MoreNowPlayingAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.MorePopularAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.PopularAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.SearchAdapter;
 import com.example.rakapermanaputra.moviewcatalog.fragment.FavoriteFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.HomeFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.NowPlayingFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.PopularFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.SearchFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.UpcomingFragment;
-import com.example.rakapermanaputra.moviewcatalog.model.JSONResponse;
-import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
-import com.example.rakapermanaputra.moviewcatalog.network.ApiService;
-import com.example.rakapermanaputra.moviewcatalog.network.RetrofitClientInstance;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

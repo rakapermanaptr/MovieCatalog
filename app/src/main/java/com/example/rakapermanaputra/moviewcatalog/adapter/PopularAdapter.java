@@ -14,27 +14,28 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.activity.DetailActivity;
-import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
-    private ArrayList<MovieItems> upcomingItems;
+    private List<Result> popularItems;
     private Context context;
 
     public PopularAdapter(Context context) {
         this.context = context;
     }
 
-    public ArrayList<MovieItems> getUpcomingItems() {
-        return upcomingItems;
+    public List<Result> getUpcomingItems() {
+        return popularItems;
     }
 
-    public void setUpcomingItems(ArrayList<MovieItems> upcomingItems) {
-        this.upcomingItems = upcomingItems;
+    public void setPopularItems(List<Result> popularItems) {
+        this.popularItems = popularItems;
     }
 
     @NonNull
@@ -47,7 +48,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final MovieItems items = upcomingItems.get(position);
+        final Result items = popularItems.get(position);
 
         holder.listPopularItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,16 +59,16 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
                 intent.hasExtra("title");
                 intent.putExtra("title", items.getTitle());
                 intent.putExtra("id", items.getId());
-                intent.putExtra("release_date", items.getRelease_date());
+                intent.putExtra("release_date", items.getReleaseDate());
                 intent.putExtra("overview", items.getOverview());
-                intent.putExtra("vote_average", items.getVote_average());
-                intent.putExtra("backdrop_path", items.getBackdrop_path());
+                intent.putExtra("vote_average", items.getVoteAverage());
+                intent.putExtra("backdrop_path", items.getPosterPath());
                 context.startActivity(intent);
             }
         });
 
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w185" + items.getPoster_path())
+                .load("http://image.tmdb.org/t/p/w185" + items.getPosterPath())
                 .override(130, 180)
                 .into(holder.imgPoster);
     }

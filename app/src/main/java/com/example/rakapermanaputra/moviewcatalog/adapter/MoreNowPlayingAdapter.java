@@ -15,26 +15,27 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.activity.DetailActivity;
-import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MoreNowPlayingAdapter extends RecyclerView.Adapter<MoreNowPlayingAdapter.ViewHolder> {
-    private ArrayList<MovieItems> movieItems;
+    private List<Result> movieItems;
     private Context context;
 
     public MoreNowPlayingAdapter(Context context) {
         this.context = context;
     }
 
-    public void setMovieItems(ArrayList<MovieItems> movieItems) {
+    public void setMovieItems(List<Result> movieItems) {
         this.movieItems = movieItems;
     }
 
-    public ArrayList<MovieItems> getMovieItems() {
+    public List<Result> getMovieItems() {
         return movieItems;
     }
 
@@ -48,16 +49,16 @@ public class MoreNowPlayingAdapter extends RecyclerView.Adapter<MoreNowPlayingAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final MovieItems items = movieItems.get(position);
+        final Result items = movieItems.get(position);
 
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w185" + items.getPoster_path())
+                .load("http://image.tmdb.org/t/p/w185" + items.getPosterPath())
                 .override(130, 180)
                 .into(holder.imgPoster);
 
         holder.tvTitle.setText(items.getTitle());
         holder.tvOverview.setText(items.getOverview());
-        holder.tvReleaseDate.setText(items.getRelease_date());
+        holder.tvReleaseDate.setText(items.getReleaseDate());
 
         holder.listItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,10 +69,10 @@ public class MoreNowPlayingAdapter extends RecyclerView.Adapter<MoreNowPlayingAd
                 intent.hasExtra("title");
                 intent.putExtra("title", items.getTitle());
                 intent.putExtra("id", items.getId());
-                intent.putExtra("release_date", items.getRelease_date());
+                intent.putExtra("release_date", items.getReleaseDate());
                 intent.putExtra("overview", items.getOverview());
-                intent.putExtra("vote_average", items.getVote_average());
-                intent.putExtra("backdrop_path", items.getBackdrop_path());
+                intent.putExtra("vote_average", items.getVoteAverage());
+                intent.putExtra("backdrop_path", items.getBackdropPath());
                 context.startActivity(intent);
             }
         });
