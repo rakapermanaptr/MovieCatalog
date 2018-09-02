@@ -38,5 +38,6 @@
     <string name="more_popular">more popular</string>
     <string name="more_now_playing">more now playing</string>
     <string name="more_upcoming">more upcoming</string>
+    <string name="favorite">Favorite</string>
 
 </resources>

@@ -65,6 +65,7 @@
                         tools:text="@string/release_date" />
 
                     <ImageView
+                        android:id="@+id/imgBookmark"
                         android:layout_width="90dp"
                         android:layout_height="80dp"
                         android:layout_alignParentRight="true"
@@ -81,6 +82,17 @@
                         android:textColor="@color/colorWhite"
                         android:textSize="20sp"
                         android:text="@string/average_rate" />
+
+                    <com.github.ivbaranov.mfb.MaterialFavoriteButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:mfb_animate_favorite="false"
+                        app:mfb_color="white"
+                        app:mfb_type="heart"
+                        android:id="@+id/btn_favorite"
+                        android:layout_marginTop="17dp"
+                        android:layout_toLeftOf="@+id/imgBookmark"
+                        />
 
                 </RelativeLayout>
 

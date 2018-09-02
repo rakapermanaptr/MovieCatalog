@@ -32,6 +32,7 @@ import com.example.rakapermanaputra.moviewcatalog.adapter.MoreNowPlayingAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.MorePopularAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.PopularAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.SearchAdapter;
+import com.example.rakapermanaputra.moviewcatalog.fragment.FavoriteFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.HomeFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.NowPlayingFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.PopularFragment;
@@ -168,6 +169,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_upcoming) {
             Toast.makeText(this, R.string.upcoming, Toast.LENGTH_SHORT).show();
             fragment = new UpcomingFragment();
+        } else if (id == R.id.nav_favorite) {
+            Toast.makeText(this, R.string.favorite, Toast.LENGTH_SHORT).show();
+            fragment = new FavoriteFragment();
         } else if (id == R.id.nav_search) {
             Toast.makeText(this, R.string.search, Toast.LENGTH_SHORT).show();
             fragment = new SearchFragment();

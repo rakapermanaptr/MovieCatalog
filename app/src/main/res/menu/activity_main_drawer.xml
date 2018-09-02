@@ -20,7 +20,10 @@
             android:id="@+id/nav_upcoming"
             android:icon="@drawable/time_left"
             android:title="@string/upcoming" />
-
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/favorite_heart_button"
+            android:title="@string/favorite"/>
         <item
             android:id="@+id/nav_search"
             android:icon="@drawable/ic_search_black_24dp"

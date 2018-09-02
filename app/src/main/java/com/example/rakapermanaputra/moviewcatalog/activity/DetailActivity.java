@@ -12,13 +12,16 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.adapter.RecommendationAdapter;
+import com.example.rakapermanaputra.moviewcatalog.fragment.FavoriteFragment;
 import com.example.rakapermanaputra.moviewcatalog.model.JSONResponse;
 import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
 import com.example.rakapermanaputra.moviewcatalog.network.ApiService;
 import com.example.rakapermanaputra.moviewcatalog.network.RetrofitClientInstance;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -44,7 +47,10 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvOverview;
     @BindView(R.id.img_backdrop)
     ImageView imgBackdrop;
-    @BindView(R.id.recyclerViewRecommendation) RecyclerView rvRecommendations;
+    @BindView(R.id.recyclerViewRecommendation)
+    RecyclerView rvRecommendations;
+    @BindView(R.id.btn_favorite)
+    MaterialFavoriteButton btnFavorite;
     public static String EXTRA_TITLE = "title";
     public static String EXTRA_DATE = "release_date";
     public static String EXTRA_OVERVIEW = "overview";
@@ -60,6 +66,14 @@ public class DetailActivity extends AppCompatActivity {
 
         seDataIntent();
 
+
+        btnFavorite.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
+            @Override
+            public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                btnFavorite.setFavorite(true);
+            }
+        });
+
     }
 
 
@@ -68,7 +82,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTitle.setText(title);
         String id = getIntent().getStringExtra("id");
         String release_date = getIntent().getStringExtra(EXTRA_DATE);
-        tvReleaseDate.setText("Release Date \n"+release_date);
+        tvReleaseDate.setText("Release Date \n" + release_date);
         String overview = getIntent().getStringExtra(EXTRA_OVERVIEW);
         tvOverview.setText(overview);
         Double rate = getIntent().getDoubleExtra("vote_average", 0);
