@@ -44,7 +44,7 @@ public class SearchFragment extends Fragment {
 
     private ArrayList<MovieItems> movieItems;
     private SearchAdapter adapter;
-    private String search ;
+    private String search;
     @BindView(R.id.recyclerViewSearch)
     RecyclerView recyclerViewSearch;
     @BindView(R.id.imgSearch)
