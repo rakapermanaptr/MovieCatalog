@@ -32,8 +32,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String IMG_URL = "https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/33044200_1982103725157949_1677686480052420608_n.jpg?_nc_cat=0&oh=73c64ea295ac327cd3aa3f30d2a6bc9c&oe=5BCE341B";
+
     CircleImageView profileImageView;
-    String profileImageUrl = "https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/33044200_1982103725157949_1677686480052420608_n.jpg?_nc_cat=0&oh=73c64ea295ac327cd3aa3f30d2a6bc9c&oe=5BCE341B";
     private String mySearchData;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         profileImageView = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageView);
         Glide.with(MainActivity.this)
-                .load(profileImageUrl)
+                .load(IMG_URL)
                 .into(profileImageView);
         navigationView.setNavigationItemSelectedListener(this);
 

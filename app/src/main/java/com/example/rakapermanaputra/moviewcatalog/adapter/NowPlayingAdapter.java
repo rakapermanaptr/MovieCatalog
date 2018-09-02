@@ -57,18 +57,17 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, items.getTitle(), Toast.LENGTH_SHORT).show();
-
+                // ambil data
+                items.getTitle();
+                items.getId();
+                items.getReleaseDate();
+                items.getOverview();
+                items.getVoteAverage();
+                items.getPosterPath();
+                // intent ke DetailActivity
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.hasExtra("title");
-                intent.putExtra("title", items.getTitle());
-                intent.putExtra("id", items.getId());
-                intent.putExtra("release_date", items.getReleaseDate());
-                intent.putExtra("overview", items.getOverview());
-                intent.putExtra("vote_average", items.getVoteAverage());
-                intent.putExtra("backdrop_path", items.getBackdropPath());
-
-                Log.i(TAG, "onClick: get vote : " + items.getVoteAverage());
-
+                // menggunakan parcelable
+                intent.putExtra(DetailActivity.EXTRA_DATA, items);
                 context.startActivity(intent);
             }
         });

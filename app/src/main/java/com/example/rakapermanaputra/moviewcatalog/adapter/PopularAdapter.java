@@ -47,22 +47,24 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        // objek baru Result
         final Result items = popularItems.get(position);
-
         holder.listPopularItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, items.getTitle(), Toast.LENGTH_SHORT).show();
-
+                // ambil data
+                items.getTitle();
+                items.getId();
+                items.getReleaseDate();
+                items.getOverview();
+                items.getVoteAverage();
+                items.getPosterPath();
+                // intent ke DetailActivity
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.hasExtra("title");
-                intent.putExtra("title", items.getTitle());
-                intent.putExtra("id", items.getId());
-                intent.putExtra("release_date", items.getReleaseDate());
-                intent.putExtra("overview", items.getOverview());
-                intent.putExtra("vote_average", items.getVoteAverage());
-                intent.putExtra("backdrop_path", items.getPosterPath());
+                // menggunakan parcelable
+                intent.putExtra(DetailActivity.EXTRA_DATA, items);
                 context.startActivity(intent);
             }
         });
@@ -75,11 +77,12 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return getUpcomingItems().size()-10;
+        return getUpcomingItems().size() - 10;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.popular_item) LinearLayout listPopularItem;
+        @BindView(R.id.popular_item)
+        LinearLayout listPopularItem;
         @BindView(R.id.img_poster)
         ImageView imgPoster;
 

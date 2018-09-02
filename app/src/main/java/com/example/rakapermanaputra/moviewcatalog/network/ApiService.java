@@ -12,19 +12,19 @@ public interface ApiService {
 
 
 
-    @GET("movie/popular?api_key=" + BuildConfig.API_KEY)
+    @GET("movie/popular" + BuildConfig.API_KEY)
     Call<MovieItems> getPopular();
 
-    @GET("movie/now_playing?api_key=" + BuildConfig.API_KEY)
+    @GET("movie/now_playing" + BuildConfig.API_KEY)
     Call<MovieItems> getNowPlaying();
 
-    @GET("movie/upcoming?api_key=" + BuildConfig.API_KEY)
+    @GET("movie/upcoming" + BuildConfig.API_KEY)
     Call<MovieItems> getUpcoming();
 
-    @GET("movie/{movie_id}/recommendations?api_key=" + BuildConfig.API_KEY)
+    @GET("movie/{movie_id}/recommendations" + BuildConfig.API_KEY)
     Call<MovieItems> getRecommend(@Path("movie_id") String id);
 
-    @GET("search/movie?api_key=" + BuildConfig.API_KEY)
+    @GET("search/movie" + BuildConfig.API_KEY)
     Call<MovieItems> getMovie(@Query("query") String query);
 
 

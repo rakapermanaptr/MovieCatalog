@@ -46,6 +46,9 @@ public class DetailActivity extends AppCompatActivity {
     public static String EXTRA_TITLE = "title";
     public static String EXTRA_DATE = "release_date";
     public static String EXTRA_OVERVIEW = "overview";
+
+    public static String EXTRA_DATA = "extra_data";
+
     List<Result> movieList;
     RecommendationAdapter adapter;
 
@@ -70,18 +73,20 @@ public class DetailActivity extends AppCompatActivity {
 
 
     private void seDataIntent() {
-        String title = getIntent().getStringExtra(EXTRA_TITLE);
+
+        Result result = getIntent().getParcelableExtra(EXTRA_DATA);
+        String title = result.getTitle();
         tvTitle.setText(title);
-        Integer id = getIntent().getIntExtra("id", 0);
+        Integer id = result.getId();
         String idMovie = String.valueOf(id);
-        String release_date = getIntent().getStringExtra(EXTRA_DATE);
+        String release_date = result.getReleaseDate();
         tvReleaseDate.setText("Release Date \n" + release_date);
-        String overview = getIntent().getStringExtra(EXTRA_OVERVIEW);
+        String overview = result.getOverview();
         tvOverview.setText(overview);
-        Float rate = getIntent().getFloatExtra("vote_average", 0);
+        Float rate = result.getVoteAverage();
         tvVoteAverage.setText(String.valueOf(rate));
 
-        String backdrop_img = getIntent().getStringExtra("backdrop_path");
+        String backdrop_img = result.getBackdropPath();
         Picasso.get()
                 .load("http://image.tmdb.org/t/p/w500" + backdrop_img)
                 .into(imgBackdrop);
