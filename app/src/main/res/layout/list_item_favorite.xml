@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:layout_marginTop="3dp"
-    android:id="@+id/cardView"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -22,14 +23,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="180dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 android:textColor="@color/colorWhite"
@@ -46,13 +47,35 @@
                 android:textColor="@color/colorWhite"
                 tools:text="@string/overview" />
 
-            <TextView
-                android:id="@+id/tv_release_date"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-                android:textColor="@color/colorWhite"
-                tools:text="@string/release_date" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                    android:textColor="@color/colorWhite"
+                    tools:text="@string/release_date" />
+
+                <com.github.ivbaranov.mfb.MaterialFavoriteButton
+                    android:id="@+id/btn_fav"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right"
+                    app:mfb_animate_favorite="false"
+                    app:mfb_color="white"
+                    app:mfb_type="heart"
+                    android:layout_alignParentRight="true"/>
+
+
+            </RelativeLayout>
+
+
+
 
 
         </LinearLayout>

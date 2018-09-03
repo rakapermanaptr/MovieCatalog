@@ -24,7 +24,8 @@
         <activity
             android:name=".activity.DetailActivity"
             android:theme="@style/AppThemeDetail" />
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.FavoriteActivity"></activity>
     </application>
 
 </manifest>

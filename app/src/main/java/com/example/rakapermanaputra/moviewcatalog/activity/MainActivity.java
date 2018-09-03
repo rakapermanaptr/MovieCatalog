@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity
 
     private static final String IMG_URL = "https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/33044200_1982103725157949_1677686480052420608_n.jpg?_nc_cat=0&oh=73c64ea295ac327cd3aa3f30d2a6bc9c&oe=5BCE341B";
 
-    CircleImageView profileImageView;
+    private CircleImageView profileImageView;
     private String mySearchData;
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,26 +132,33 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragment = null;
 
+        String actionBarTitle = null;
 
         if (id == R.id.nav_home) {
             // Handle the camera action
             Toast.makeText(this, R.string.home, Toast.LENGTH_SHORT).show();
             fragment = new HomeFragment();
+            actionBarTitle = getString(R.string.movie_catalog);
         } else if (id == R.id.nav_popular) {
             Toast.makeText(this, R.string.popular, Toast.LENGTH_SHORT).show();
             fragment = new PopularFragment();
+            actionBarTitle = getString(R.string.popular);
         } else if (id == R.id.nav_now_playing) {
             Toast.makeText(this, R.string.now_playing, Toast.LENGTH_SHORT).show();
             fragment = new NowPlayingFragment();
+            actionBarTitle = getString(R.string.now_playing);
         } else if (id == R.id.nav_upcoming) {
             Toast.makeText(this, R.string.upcoming, Toast.LENGTH_SHORT).show();
             fragment = new UpcomingFragment();
+            actionBarTitle = getString(R.string.upcoming);
         } else if (id == R.id.nav_favorite) {
             Toast.makeText(this, R.string.favorite, Toast.LENGTH_SHORT).show();
             fragment = new FavoriteFragment();
+            actionBarTitle = getString(R.string.favorite);
         } else if (id == R.id.nav_search) {
             Toast.makeText(this, R.string.search, Toast.LENGTH_SHORT).show();
             fragment = new SearchFragment();
+            actionBarTitle = getString(R.string.search_movie);
         } else if (id == R.id.nav_share) {
             Toast.makeText(this, R.string.share, Toast.LENGTH_SHORT).show();
         }
@@ -163,6 +170,8 @@ public class MainActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .commit();
         }
+
+        getSupportActionBar().setTitle(actionBarTitle);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

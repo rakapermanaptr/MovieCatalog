@@ -1,8 +1,10 @@
 package com.example.rakapermanaputra.moviewcatalog.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,43 +16,42 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.rakapermanaputra.moviewcatalog.R;
-import com.example.rakapermanaputra.moviewcatalog.activity.DetailActivity;
+import com.example.rakapermanaputra.moviewcatalog.activity.MainActivity;
+import com.example.rakapermanaputra.moviewcatalog.database.MovieHelper;
 import com.example.rakapermanaputra.moviewcatalog.model.Result;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
+import java.util.LinkedList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
-    private List<Result> movieItems;
-    private Context context;
+    private LinkedList<Result> movieItems;
+    private Activity activity;
 
-    public FavoriteAdapter(Context context) {
-        this.context = context;
+    public FavoriteAdapter(Activity activity) {
+        this.activity = activity;
     }
 
-    public void setMovieItems(List<Result> movieItems) {
+    public void setMovieItems(LinkedList<Result> movieItems) {
         this.movieItems = movieItems;
     }
 
-    public List<Result> getMovieItems() {
+    public LinkedList<Result> getMovieItems() {
         return movieItems;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_favorite, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final Result items = movieItems.get(position);
 
-        Glide.with(context)
+        Glide.with(activity)
                 .load("http://image.tmdb.org/t/p/w185" + items.getPosterPath())
                 .override(130, 180)
                 .into(holder.imgPoster);
@@ -58,25 +59,21 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.tvTitle.setText(items.getTitle());
         holder.tvOverview.setText(items.getOverview());
         holder.tvReleaseDate.setText(items.getReleaseDate());
+        holder.favoriteButton.setFavorite(true);
 
-        holder.listItem.setOnClickListener(new View.OnClickListener() {
+        holder.favoriteButton.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(context, items.getTitle(), Toast.LENGTH_SHORT).show();
-                // ambil data
-                items.getTitle();
-                items.getId();
-                items.getReleaseDate();
-                items.getOverview();
-                items.getVoteAverage();
-                items.getPosterPath();
-                // intent ke DetailActivity
-                Intent intent = new Intent(context, DetailActivity.class);
-                // menggunakan parcelable
-                intent.putExtra(DetailActivity.EXTRA_DATA, items);
-                context.startActivity(intent);
+            public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                Toast.makeText(activity,  items.getTitle() + " Deleted from Favorite", Toast.LENGTH_SHORT).show();
+
+                MovieHelper movieHelper = new MovieHelper(activity);
+                movieHelper.open();
+                movieHelper.delete(items.getId());
+
+                activity.startActivity(new Intent(activity, MainActivity.class));
             }
         });
+
     }
 
     @Override
@@ -93,8 +90,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         TextView tvOverview;
         @BindView(R.id.tv_release_date)
         TextView tvReleaseDate;
-        @BindView(R.id.list_item)
-        LinearLayout listItem;
+        @BindView(R.id.cardView)
+        CardView cardView;
+        @BindView(R.id.btn_fav)
+        MaterialFavoriteButton favoriteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -39,5 +39,11 @@
     <string name="more_now_playing">more now playing</string>
     <string name="more_upcoming">more upcoming</string>
     <string name="favorite">Favorite</string>
+    <string name="search_movie">Search Movie</string>
+    <string name="favorite">Favorite</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="popular">Popular</string>
+    <string name="movie_catalog">Movie Catalog</string>
 
 </resources>
