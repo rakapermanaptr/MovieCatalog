@@ -70,7 +70,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
         });
 
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w185" + items.getBackdropPath())
+                .load("http://image.tmdb.org/t/p/w185" + items.getPosterPath())
                 .override(130, 180)
                 .into(holder.imgPoster);
 

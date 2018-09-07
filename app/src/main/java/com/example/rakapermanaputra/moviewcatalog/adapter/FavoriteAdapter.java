@@ -79,15 +79,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             }
         });
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(activity, "Test " + items.getTitle(), Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
     }
 
     @Override
