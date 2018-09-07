@@ -3,6 +3,12 @@
     package="com.example.rakapermanaputra.moviewcatalog">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission
+        android:name="com.example.rakapermanaputra.moviewcatalog.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.example.rakapermanaputra.moviewcatalog.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -24,8 +30,14 @@
         <activity
             android:name=".activity.DetailActivity"
             android:theme="@style/AppThemeDetail" />
-        <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.FavoriteActivity"></activity>
+
+        <provider
+            android:authorities="com.example.rakapermanaputra.moviewcatalog"
+            android:name=".provider.MovieProvider"
+            android:exported="true"
+            android:readPermission="com.example.rakapermanaputra.moviewcatalog.READ_DATABASE"
+            android:writePermission="com.example.rakapermanaputra.moviewcatalog.WRITE_DATABASE" />
+        
     </application>
 
 </manifest>

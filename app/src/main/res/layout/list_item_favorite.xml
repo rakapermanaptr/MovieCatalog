@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-                android:maxLines="5"
+                android:maxLines="3"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:textColor="@color/colorWhite"
                 tools:text="@string/overview" />

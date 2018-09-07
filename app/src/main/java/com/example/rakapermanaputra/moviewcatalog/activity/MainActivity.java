@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
     private CircleImageView profileImageView;
     private String mySearchData;
     @BindView(R.id.toolbar)
-    private Toolbar toolbar;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_search) {
             Toast.makeText(this, R.string.search, Toast.LENGTH_SHORT).show();
             fragment = new SearchFragment();
-            actionBarTitle = getString(R.string.search_movie);
+            actionBarTitle = getString(R.string.search_hint);
         } else if (id == R.id.nav_share) {
             Toast.makeText(this, R.string.share, Toast.LENGTH_SHORT).show();
         }

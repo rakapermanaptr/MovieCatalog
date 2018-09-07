@@ -1,6 +1,7 @@
 package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.rakapermanaputra.moviewcatalog.R;
 import com.example.rakapermanaputra.moviewcatalog.adapter.FavoriteAdapter;
@@ -21,12 +23,14 @@ import java.util.LinkedList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.CONTENT_URI;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FavoriteFragment extends Fragment {
 
-    private LinkedList<Result> movieList;
+    private Cursor movieList;
     private FavoriteAdapter adapter;
     private MovieHelper movieHelper;
 
@@ -50,11 +54,6 @@ public class FavoriteFragment extends Fragment {
         recyclerViewFavorite.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewFavorite.setHasFixedSize(true);
 
-        movieHelper = new MovieHelper(getActivity());
-        movieHelper.open();
-
-        movieList = new LinkedList<>();
-
         adapter = new FavoriteAdapter(getActivity());
         adapter.setMovieItems(movieList);
         recyclerViewFavorite.setAdapter(adapter);
@@ -65,30 +64,29 @@ public class FavoriteFragment extends Fragment {
 
     }
 
-    private class LoadMovieAsync extends AsyncTask<Void, Void, ArrayList<Result>> {
+    private class LoadMovieAsync extends AsyncTask<Void, Void, Cursor> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            if (movieList.size() > 0) {
-                movieList.clear();
-            }
         }
 
         @Override
-        protected ArrayList<Result> doInBackground(Void... voids) {
-            return movieHelper.query();
+        protected Cursor doInBackground(Void... voids) {
+            return getActivity().getContentResolver().query(CONTENT_URI, null, null, null, null);
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Result> results) {
+        protected void onPostExecute(Cursor results) {
             super.onPostExecute(results);
 
-            movieList.addAll(results);
+            movieList = results;
             adapter.setMovieItems(movieList);
             adapter.notifyDataSetChanged();
 
-
+            if (movieList.getCount() == 0) {
+                Toast.makeText(getContext(), "Tidak ada data saat ini", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

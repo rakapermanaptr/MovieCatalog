@@ -1,4 +1,4 @@
-package com.example.rakapermanaputra.moviewcatalog.database;
+package com.example.myfavorite;
 
 import android.database.Cursor;
 import android.net.Uri;

@@ -1,6 +1,9 @@
 package com.example.rakapermanaputra.moviewcatalog.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +31,12 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.CONTENT_URI;
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.MovieColumns.OVERVIEW;
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.MovieColumns.POSTER_PATH;
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.MovieColumns.RELEASE_DATE;
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.MovieColumns.TITLE;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -71,27 +80,36 @@ public class DetailActivity extends AppCompatActivity {
         movieHelper = new MovieHelper(this);
         movieHelper.open();
 
-        items = getIntent().getParcelableExtra(EXTRA_DATA);
+        Uri uri = getIntent().getData();
+
+        if (uri != null) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            if (cursor != null){
+                if(cursor.moveToFirst()) items = new Result(cursor);
+                cursor.close();
+            }
+        }
 
         btnFavorite.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
             @Override
             public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                Toast.makeText(DetailActivity.this, items.getTitle() + " Added to Favorite", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailActivity.this, tvTitle.getText().toString() + " Added to Favorite", Toast.LENGTH_SHORT).show();
+
+                Result result = getIntent().getParcelableExtra(EXTRA_DATA);
 
                 String title = tvTitle.getText().toString().trim();
                 String release_date = tvReleaseDate.getText().toString().trim();
                 String overview = tvOverview.getText().toString().trim();
-                String poster_path = items.getPosterPath();
+                String poster_path = result.getPosterPath();
 
-                Log.i("TEST  ", "getPosterPath : " + poster_path);
+                ContentValues values = new ContentValues();
+                values.put(TITLE, title);
+                values.put(OVERVIEW, overview);
+                values.put(RELEASE_DATE, release_date);
+                values.put(POSTER_PATH, poster_path);
 
-                Result items = new Result();
-                items.setTitle(title);
-                items.setReleaseDate(release_date);
-                items.setOverview(overview);
-                items.setPosterPath(poster_path);
+                getContentResolver().insert(CONTENT_URI, values);
 
-                movieHelper.insert(items);
                 setResult(RESULT_ADD);
                 finish();
             }

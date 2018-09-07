@@ -1,19 +1,18 @@
-package com.example.rakapermanaputra.moviewcatalog.model;
+package com.example.myfavorite;
 
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.provider.BaseColumns._ID;
-import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.getColumnInt;
-import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.getColumnString;
+import static com.example.myfavorite.DatabaseContract.getColumnInt;
+import static com.example.myfavorite.DatabaseContract.getColumnString;
 
 public class Result implements Parcelable {
 
@@ -224,7 +223,7 @@ public class Result implements Parcelable {
         this.posterPath = getColumnString(cursor, DatabaseContract.MovieColumns.POSTER_PATH);
     }
 
-    public static final Parcelable.Creator<Result> CREATOR = new Parcelable.Creator<Result>() {
+    public static final Creator<Result> CREATOR = new Creator<Result>() {
         @Override
         public Result createFromParcel(Parcel source) {
             return new Result(source);

@@ -3,6 +3,8 @@ package com.example.rakapermanaputra.moviewcatalog.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.rakapermanaputra.moviewcatalog.R;
+import com.example.rakapermanaputra.moviewcatalog.activity.DetailActivity;
 import com.example.rakapermanaputra.moviewcatalog.activity.MainActivity;
 import com.example.rakapermanaputra.moviewcatalog.database.MovieHelper;
 import com.example.rakapermanaputra.moviewcatalog.model.Result;
@@ -24,19 +27,21 @@ import java.util.LinkedList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.CONTENT_URI;
+
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
-    private LinkedList<Result> movieItems;
+    private Cursor movieItems;
     private Activity activity;
 
     public FavoriteAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    public void setMovieItems(LinkedList<Result> movieItems) {
+    public void setMovieItems(Cursor movieItems) {
         this.movieItems = movieItems;
     }
 
-    public LinkedList<Result> getMovieItems() {
+    public Cursor getMovieItems() {
         return movieItems;
     }
 
@@ -49,7 +54,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        final Result items = movieItems.get(position);
+        final Result items = getItem(position);
 
         Glide.with(activity)
                 .load("http://image.tmdb.org/t/p/w185" + items.getPosterPath())
@@ -66,11 +71,20 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
                 Toast.makeText(activity,  items.getTitle() + " Deleted from Favorite", Toast.LENGTH_SHORT).show();
 
-                MovieHelper movieHelper = new MovieHelper(activity);
-                movieHelper.open();
-                movieHelper.delete(items.getId());
-
+                activity.getContentResolver().delete(
+                        Uri.parse(CONTENT_URI + "/" + items.getId()),
+                        null,
+                        null);
                 activity.startActivity(new Intent(activity, MainActivity.class));
+            }
+        });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity, "Test " + items.getTitle(), Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -78,7 +92,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return getMovieItems().size();
+        if (movieItems == null) return 0;
+        return movieItems.getCount();
+    }
+
+    private Result getItem(int position) {
+        if (!movieItems.moveToPosition(position)) {
+            throw new IllegalStateException("Position invalid");
+        }
+        return new Result(movieItems);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

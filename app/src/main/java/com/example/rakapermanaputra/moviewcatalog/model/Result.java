@@ -1,12 +1,19 @@
 package com.example.rakapermanaputra.moviewcatalog.model;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import static android.provider.BaseColumns._ID;
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.getColumnInt;
+import static com.example.rakapermanaputra.moviewcatalog.database.DatabaseContract.getColumnString;
 
 public class Result implements Parcelable {
 
@@ -207,6 +214,14 @@ public class Result implements Parcelable {
         this.adult = in.readByte() != 0;
         this.overview = in.readString();
         this.releaseDate = in.readString();
+    }
+
+    public Result(Cursor cursor){
+        this.id = getColumnInt(cursor, _ID);
+        this.title = getColumnString(cursor, DatabaseContract.MovieColumns.TITLE);
+        this.overview = getColumnString(cursor, DatabaseContract.MovieColumns.OVERVIEW);
+        this.releaseDate = getColumnString(cursor, DatabaseContract.MovieColumns.RELEASE_DATE);
+        this.posterPath = getColumnString(cursor, DatabaseContract.MovieColumns.POSTER_PATH);
     }
 
     public static final Parcelable.Creator<Result> CREATOR = new Parcelable.Creator<Result>() {
