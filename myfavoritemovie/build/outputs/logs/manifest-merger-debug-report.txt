@@ -1,0 +1,124 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/21d3ea43d0dad2acad2ca89b7fb08f5c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/1246c8f7f3bfd3677a5b1da75c66c75a/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:cardview-v7:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/53915e282b27e7195025b18c40a8beb8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.ivbaranov:materialfavoritebutton:0.1.4] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/materialfavoritebutton-0.1.4.aar/dfb4f2c4ca945854882a0a80fa17655b/AndroidManifest.xml:2:1-11:12
+MERGED from [com.jakewharton:butterknife:8.8.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/a593fd08a6ed2ee74db0ee52a85cc55e/AndroidManifest.xml:2:1-7:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/2306eae1ecda4bfdac440bb9785370f6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/1920627d4faf2e5559732eb4327b1953/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/609fc3b29aedfe3668c7ef0253056901/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/8eae834c51324632a7505feeb41a235a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/21467d9a7c0a79a1e455bbfd0f855d74/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4841bf922ce7bcb9774718365a0f23c6/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/c7d3c3d33efe29d0b2b0415bacd48745/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4abac59b2eccbfcb2f3fb4d5545072eb/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/48405af1a3effbb74f9e15765b5e5a78/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/171ebcd8fb86ff650670c8511e362970/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:3:5-42
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:5:22-64
+uses-permission#com.example.rakapermanaputra.moviewcatalog.READ_DATABASE
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:7:5-96
+	android:name
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:7:22-93
+uses-permission#com.example.rakapermanaputra.moviewcatalog.WRITE_DATABASE
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:8:5-97
+	android:name
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:8:22-94
+application
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:10:5-24:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/1246c8f7f3bfd3677a5b1da75c66c75a/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/1246c8f7f3bfd3677a5b1da75c66c75a/AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:15:9-35
+	android:label
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:13:9-41
+	android:roundIcon
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:14:9-54
+	android:icon
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:12:9-43
+	android:allowBackup
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:16:9-40
+activity#com.example.myfavoritemovie.MainActivity
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:17:9-23:20
+	android:name
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:17:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml:21:27-74
+uses-sdk
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/21d3ea43d0dad2acad2ca89b7fb08f5c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/21d3ea43d0dad2acad2ca89b7fb08f5c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/1246c8f7f3bfd3677a5b1da75c66c75a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/1246c8f7f3bfd3677a5b1da75c66c75a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:cardview-v7:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/53915e282b27e7195025b18c40a8beb8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/53915e282b27e7195025b18c40a8beb8/AndroidManifest.xml:20:5-44
+MERGED from [com.github.ivbaranov:materialfavoritebutton:0.1.4] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/materialfavoritebutton-0.1.4.aar/dfb4f2c4ca945854882a0a80fa17655b/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.ivbaranov:materialfavoritebutton:0.1.4] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/materialfavoritebutton-0.1.4.aar/dfb4f2c4ca945854882a0a80fa17655b/AndroidManifest.xml:7:5-9:41
+MERGED from [com.jakewharton:butterknife:8.8.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/a593fd08a6ed2ee74db0ee52a85cc55e/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/a593fd08a6ed2ee74db0ee52a85cc55e/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/2306eae1ecda4bfdac440bb9785370f6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/2306eae1ecda4bfdac440bb9785370f6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/1920627d4faf2e5559732eb4327b1953/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/1920627d4faf2e5559732eb4327b1953/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/609fc3b29aedfe3668c7ef0253056901/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/609fc3b29aedfe3668c7ef0253056901/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/8eae834c51324632a7505feeb41a235a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/8eae834c51324632a7505feeb41a235a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/21467d9a7c0a79a1e455bbfd0f855d74/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/21467d9a7c0a79a1e455bbfd0f855d74/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4841bf922ce7bcb9774718365a0f23c6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4841bf922ce7bcb9774718365a0f23c6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/c7d3c3d33efe29d0b2b0415bacd48745/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/c7d3c3d33efe29d0b2b0415bacd48745/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4abac59b2eccbfcb2f3fb4d5545072eb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4abac59b2eccbfcb2f3fb4d5545072eb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/48405af1a3effbb74f9e15765b5e5a78/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/48405af1a3effbb74f9e15765b5e5a78/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/171ebcd8fb86ff650670c8511e362970/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/rakapermanaputra/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/171ebcd8fb86ff650670c8511e362970/AndroidManifest.xml:20:5-44
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		ADDED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
+		INJECTED from /Users/rakapermanaputra/AndroidStudioProjects/Dicoding/MovieCatalog ui ux/myfavoritemovie/src/main/AndroidManifest.xml
