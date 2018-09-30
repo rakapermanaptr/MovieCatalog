@@ -39,6 +39,10 @@
     <string name="more_now_playing">more now playing</string>
     <string name="more_upcoming">more upcoming</string>
     <string name="movie_catalog">Movie Catalog</string>
+    <string name="appwidget_text">Favorite Movie</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_text">Favorite Empty</string>
     <string name="favorite">Favorite</string>
-
+    <string name="upcoming_reminder_msg">%s Release</string>
+    <string name="msg_daily_reminder">hello check CatalogMovie, Lets go</string>
 </resources>

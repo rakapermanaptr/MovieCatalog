@@ -168,7 +168,7 @@ public class HomeFragment extends Fragment {
                 for (int i = 0; i < movieList.size(); i++) {
                     Result result = movieList.get(i);
 
-                    Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
+                    Log.i(TAG, "onResponse: " + "get release date : " + result.getReleaseDate());
                 }
                 rvUpcoming.setHasFixedSize(true);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);

@@ -1,9 +1,15 @@
 package com.example.rakapermanaputra.moviewcatalog.activity;
 
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.design.widget.NavigationView;
@@ -12,6 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -24,6 +31,10 @@ import com.example.rakapermanaputra.moviewcatalog.fragment.NowPlayingFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.PopularFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.SearchFragment;
 import com.example.rakapermanaputra.moviewcatalog.fragment.UpcomingFragment;
+import com.example.rakapermanaputra.moviewcatalog.model.Result;
+import com.example.rakapermanaputra.moviewcatalog.reminder.DailyReminder;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +49,8 @@ public class MainActivity extends AppCompatActivity
     private String mySearchData;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    public static final int NOTIFICAITION_ID = 1;
+//    DailyReminder dailyReminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,9 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+
+//        dailyReminder = new DailyReminder();
+//        dailyReminder.setRepeatingAlarm(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,6 +84,22 @@ public class MainActivity extends AppCompatActivity
                     .commit();
 
         }
+
+//
+//        NotificationCompat.Builder notification = (NotificationCompat.Builder) new NotificationCompat
+//                .Builder(this)
+//                .setSmallIcon(R.drawable.ic_notifications_white_48dp)
+//                .setLargeIcon(BitmapFactory
+//                        .decodeResource(getResources()
+//                                , R.drawable.ic_notifications_white_48dp))
+//                .setContentTitle("Movie Catalog")
+//                .setContentText("Hey! we miss you")
+//                .setSubText("come back")
+//                .setAutoCancel(true);
+//
+//        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+//        notificationManagerCompat.notify(NOTIFICAITION_ID, notification.build());
+
     }
 
     @Override
@@ -121,6 +153,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
 
+        if (id == R.id.action_scheduler) {
+            Toast.makeText(this, "tes scheduler", Toast.LENGTH_SHORT).show();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -161,6 +197,10 @@ public class MainActivity extends AppCompatActivity
             actionBarTitle = getString(R.string.search_hint);
         } else if (id == R.id.nav_share) {
             Toast.makeText(this, R.string.share, Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_setting) {
+            Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SettingActivity.class));
+            actionBarTitle = "Setting Notification";
         }
 
         if (fragment != null) {

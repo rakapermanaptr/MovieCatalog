@@ -3,6 +3,9 @@ package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 import android.os.Bundle;
 
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +43,6 @@ public class PopularFragment extends Fragment {
     private MorePopularAdapter morePopularAdapter;
 
 
-
     public PopularFragment() {
         // Required empty public constructor
 
@@ -59,6 +61,7 @@ public class PopularFragment extends Fragment {
 
         return view;
     }
+
 
     private void getPopular() {
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
@@ -87,8 +90,5 @@ public class PopularFragment extends Fragment {
             }
         });
     }
-
-
-
 
 }

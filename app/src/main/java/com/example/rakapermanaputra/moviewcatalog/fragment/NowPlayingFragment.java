@@ -2,7 +2,8 @@ package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
+
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,12 +31,14 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NowPlayingFragment extends android.support.v4.app.Fragment {
+public class NowPlayingFragment extends Fragment {
     private static final String TAG = "request ";
     @BindView(R.id.recyclerViewNowPlaying)
     RecyclerView rvMoreNowPlaying;
     private List<Result> movieList;
     private MoreNowPlayingAdapter moreNowPlayingAdapter;
+
+    private ArrayList<Result> data;
 
 
     public NowPlayingFragment() {
@@ -50,10 +53,45 @@ public class NowPlayingFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
         ButterKnife.bind(this, view);
         rvMoreNowPlaying.setHasFixedSize(true);
+        initView();
 
-        getNowPlaying();
+        if (savedInstanceState != null) {
+            List<Result> list;
+            data = savedInstanceState.getParcelableArrayList("now_playing");
+
+
+            if (data == null) {
+                getNowPlaying();
+            }else{
+                moreNowPlayingAdapter = new MoreNowPlayingAdapter(getActivity());
+                rvMoreNowPlaying.setAdapter(moreNowPlayingAdapter);
+            }
+
+        } else {
+            getNowPlaying();
+
+        }
 
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (data == null) {
+            getNowPlaying();
+        }else{
+            outState.putParcelableArrayList("now_playing", new ArrayList<>(data));
+        }
+    }
+
+    //initView
+    private void initView() {
+        rvMoreNowPlaying.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        rvMoreNowPlaying.setLayoutManager(layoutManager);
+
     }
 
     private void getNowPlaying() {
