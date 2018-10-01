@@ -2,6 +2,7 @@ package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rakapermanaputra.moviewcatalog.R;
+import com.example.rakapermanaputra.moviewcatalog.adapter.MoreNowPlayingAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.NowPlayingAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.PopularAdapter;
 import com.example.rakapermanaputra.moviewcatalog.adapter.UpcomingAdapter;
@@ -53,6 +55,9 @@ public class HomeFragment extends Fragment {
     private NowPlayingAdapter nowPlayingAdapter;
     private UpcomingAdapter upcomingAdapter;
 
+    List<Result> listUpcoming;
+    List<Result> listNowPlaying;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -70,7 +75,8 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), R.string.more_popular, Toast.LENGTH_SHORT).show();
                 Fragment fragmentPopular = new PopularFragment();
-                getFragmentManager().beginTransaction().replace(R.id.content_main, fragmentPopular).addToBackStack(null).commit();  }
+                getFragmentManager().beginTransaction().replace(R.id.content_main, fragmentPopular).addToBackStack(null).commit();
+            }
         });
 
         tvMoreNowPlaying.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +97,82 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        getPopular();
-        getNowPlaying();
-        getUpcoming();
+//        getPopular();
+//        getNowPlaying();
+//        getUpcoming();
+
+        initViewNowPlaying();
+        initViewPopular();
+        initViewUpcoming();
+
+        if (savedInstanceState != null) {
+
+            movieList = savedInstanceState.getParcelableArrayList("popular");
+            listNowPlaying = savedInstanceState.getParcelableArrayList("now_playing");
+            listUpcoming = savedInstanceState.getParcelableArrayList("upcoming");
+
+            popularAdapter = new PopularAdapter(getActivity());
+            popularAdapter.setPopularItems(HomeFragment.this.movieList);
+            rvPopular.setAdapter(popularAdapter);
+
+            nowPlayingAdapter = new NowPlayingAdapter(getActivity());
+            nowPlayingAdapter.setNowPlayingItems(HomeFragment.this.movieList);
+            rvNowPlaying.setAdapter(nowPlayingAdapter);
+
+            upcomingAdapter = new UpcomingAdapter(getActivity());
+            upcomingAdapter.setUpcomingItems(HomeFragment.this.movieList);
+            rvUpcoming.setAdapter(upcomingAdapter);
+        } else {
+            getUpcoming();
+            getNowPlaying();
+            getPopular();
+        }
 
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (movieList == null) {
+            getPopular();
+//            getNowPlaying();
+//            getUpcoming();
+        }else{
+//            outState.putParcelableArrayList("now_playing", new ArrayList<>(listNowPlaying));
+//            outState.putParcelableArrayList("up_coming", new ArrayList<>(listUpcoming));
+            outState.putParcelableArrayList("popular", new ArrayList<>(movieList));
+        }
+
+        if (listNowPlaying == null) {
+            getNowPlaying();
+        } else {
+            outState.putParcelableArrayList("now_playing", new ArrayList<>(listNowPlaying));
+        }
+
+        if (listUpcoming == null) {
+            getUpcoming();
+        } else {
+            outState.putParcelableArrayList("upcoming", new ArrayList<>(listUpcoming));
+        }
+    }
+
+    private void initViewUpcoming() {
+        rvUpcoming.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rvUpcoming.setLayoutManager(linearLayoutManager);
+    }
+
+    private void initViewPopular() {
+        rvPopular.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rvPopular.setLayoutManager(linearLayoutManager);
+    }
+
+    private void initViewNowPlaying() {
+        rvNowPlaying.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rvNowPlaying.setLayoutManager(linearLayoutManager);
     }
 
     private void getPopular() {
@@ -110,11 +187,11 @@ public class HomeFragment extends Fragment {
                 for (int i = 0; i < movieList.size(); i++) {
                     Result result = movieList.get(i);
 
-                    Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
+                    Log.i(TAG, "POPULAR " + "get title : " + result.getTitle());
                 }
-                rvPopular.setHasFixedSize(true);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-                rvPopular.setLayoutManager(linearLayoutManager);
+//                rvPopular.setHasFixedSize(true);
+//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//                rvPopular.setLayoutManager(linearLayoutManager);
                 popularAdapter = new PopularAdapter(getActivity());
                 popularAdapter.setPopularItems(HomeFragment.this.movieList);
                 rvPopular.setAdapter(popularAdapter);
@@ -134,18 +211,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
                 MovieItems movieItems = response.body();
-                movieList = movieItems.getResults();
+                listNowPlaying = movieItems.getResults();
 
-                for (int i = 0; i < movieList.size(); i++) {
-                    Result result = movieList.get(i);
+                for (int i = 0; i < listNowPlaying.size(); i++) {
+                    Result result = listNowPlaying.get(i);
 
-                    Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
+                    Log.i(TAG, "NOW PLAYING " + "title : " + result.getTitle());
                 }
-                rvNowPlaying.setHasFixedSize(true);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-                rvNowPlaying.setLayoutManager(linearLayoutManager);
+//                rvNowPlaying.setHasFixedSize(true);
+//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//                rvNowPlaying.setLayoutManager(linearLayoutManager);
                 nowPlayingAdapter = new NowPlayingAdapter(getActivity());
-                nowPlayingAdapter.setNowPlayingItems(HomeFragment.this.movieList);
+                nowPlayingAdapter.setNowPlayingItems(HomeFragment.this.listNowPlaying);
                 rvNowPlaying.setAdapter(nowPlayingAdapter);
             }
 
@@ -163,18 +240,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
                 MovieItems movieItems = response.body();
-                movieList = movieItems.getResults();
+                listUpcoming = movieItems.getResults();
 
-                for (int i = 0; i < movieList.size(); i++) {
-                    Result result = movieList.get(i);
+                for (int i = 0; i < listUpcoming.size(); i++) {
+                    Result result = listUpcoming.get(i);
 
-                    Log.i(TAG, "onResponse: " + "get release date : " + result.getReleaseDate());
+                    Log.i(TAG, "UPCOMING " + "title : " + result.getTitle());
                 }
-                rvUpcoming.setHasFixedSize(true);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-                rvUpcoming.setLayoutManager(linearLayoutManager);
+//                rvUpcoming.setHasFixedSize(true);
+//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//                rvUpcoming.setLayoutManager(linearLayoutManager);
                 upcomingAdapter = new UpcomingAdapter(getActivity());
-                upcomingAdapter.setUpcomingItems(HomeFragment.this.movieList);
+                upcomingAdapter.setUpcomingItems(HomeFragment.this.listUpcoming);
                 rvUpcoming.setAdapter(upcomingAdapter);
             }
 

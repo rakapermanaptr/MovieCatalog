@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity
     private String mySearchData;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    public static final int NOTIFICAITION_ID = 1;
-//    DailyReminder dailyReminder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +58,6 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
-
-//        dailyReminder = new DailyReminder();
-//        dailyReminder.setRepeatingAlarm(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -84,21 +80,6 @@ public class MainActivity extends AppCompatActivity
                     .commit();
 
         }
-
-//
-//        NotificationCompat.Builder notification = (NotificationCompat.Builder) new NotificationCompat
-//                .Builder(this)
-//                .setSmallIcon(R.drawable.ic_notifications_white_48dp)
-//                .setLargeIcon(BitmapFactory
-//                        .decodeResource(getResources()
-//                                , R.drawable.ic_notifications_white_48dp))
-//                .setContentTitle("Movie Catalog")
-//                .setContentText("Hey! we miss you")
-//                .setSubText("come back")
-//                .setAutoCancel(true);
-//
-//        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-//        notificationManagerCompat.notify(NOTIFICAITION_ID, notification.build());
 
     }
 
