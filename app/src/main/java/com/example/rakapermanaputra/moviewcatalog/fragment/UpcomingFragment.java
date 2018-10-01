@@ -2,6 +2,8 @@ package com.example.rakapermanaputra.moviewcatalog.fragment;
 
 
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,9 +54,36 @@ public class UpcomingFragment extends Fragment {
         ButterKnife.bind(this, view);
         rvMoreUpcoming.setHasFixedSize(true);
 
-        getUpcoming();
+        initView();
+
+        if (savedInstanceState != null) {
+            movieList = savedInstanceState.getParcelableArrayList("upcoming");
+            moreUpcomingAdapter = new MoreUpcomingAdapter(getActivity());
+            moreUpcomingAdapter.setMovieItems(UpcomingFragment.this.movieList);
+            rvMoreUpcoming.setAdapter(moreUpcomingAdapter);
+        } else {
+            getUpcoming();
+        }
 
         return view;
+    }
+
+    private void initView() {
+        rvMoreUpcoming.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        rvMoreUpcoming.setLayoutManager(layoutManager);
+
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (movieList == null) {
+            getUpcoming();
+        } else {
+            outState.putParcelableArrayList("upcoming", new ArrayList<>(movieList));
+        }
     }
 
     private void getUpcoming() {
@@ -71,8 +100,6 @@ public class UpcomingFragment extends Fragment {
 
                     Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
                 }
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                rvMoreUpcoming.setLayoutManager(linearLayoutManager);
                 moreUpcomingAdapter = new MoreUpcomingAdapter(getActivity());
                 moreUpcomingAdapter.setMovieItems(UpcomingFragment.this.movieList);
                 rvMoreUpcoming.setAdapter(moreUpcomingAdapter);

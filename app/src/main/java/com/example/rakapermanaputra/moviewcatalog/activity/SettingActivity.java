@@ -124,7 +124,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
-        Call<MovieItems> call = service.getUpcoming();
+        Call<MovieItems> call = service.getNowPlaying();
         call.enqueue(new Callback<MovieItems>() {
             @Override
             public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
@@ -134,11 +134,10 @@ public class SettingActivity extends AppCompatActivity {
                 for (int i = 0; i < movieList.size(); i++) {
                     Result result = movieList.get(i);
 
-                    Log.d("TES ", "Release date : " +  result.getReleaseDate());
+                    Log.d("TES ", "Release date : " +  result.getReleaseDate() + " " + result.getTitle());
 
                     if (result.getReleaseDate().equals(now)) {
-                        movieList.add(result);
-                        alarmReleaseReceiver.setReleaseReminderAlarm(getApplicationContext(), movieList);
+                        alarmReleaseReceiver.setReleaseReminderAlarm(getApplicationContext(), result.getTitle());
                     }
 
                 }

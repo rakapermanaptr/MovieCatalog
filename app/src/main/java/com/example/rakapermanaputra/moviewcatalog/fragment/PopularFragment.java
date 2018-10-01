@@ -57,11 +57,37 @@ public class PopularFragment extends Fragment {
         ButterKnife.bind(this, view);
         rvMorePopular.setHasFixedSize(true);
 
-        getPopular();
+        initView();
+
+        if (savedInstanceState != null) {
+            movieList = savedInstanceState.getParcelableArrayList("popular");
+            morePopularAdapter = new MorePopularAdapter(getActivity());
+            morePopularAdapter.setMovieItems(PopularFragment.this.movieList);
+            rvMorePopular.setAdapter(morePopularAdapter);
+        } else {
+            getPopular();
+        }
 
         return view;
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (movieList == null) {
+            getPopular();
+        } else {
+            outState.putParcelableArrayList("popular", new ArrayList<>(movieList));
+        }
+    }
+
+    private void initView() {
+        rvMorePopular.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        rvMorePopular.setLayoutManager(layoutManager);
+
+    }
 
     private void getPopular() {
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
@@ -77,8 +103,6 @@ public class PopularFragment extends Fragment {
 
                     Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
                 }
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                rvMorePopular.setLayoutManager(linearLayoutManager);
                 morePopularAdapter = new MorePopularAdapter(getActivity());
                 morePopularAdapter.setMovieItems(PopularFragment.this.movieList);
                 rvMorePopular.setAdapter(morePopularAdapter);

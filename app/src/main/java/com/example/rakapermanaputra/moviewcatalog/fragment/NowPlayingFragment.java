@@ -32,14 +32,12 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class NowPlayingFragment extends Fragment {
+
     private static final String TAG = "request ";
     @BindView(R.id.recyclerViewNowPlaying)
     RecyclerView rvMoreNowPlaying;
     private List<Result> movieList;
     private MoreNowPlayingAdapter moreNowPlayingAdapter;
-
-    private ArrayList<Result> data;
-
 
     public NowPlayingFragment() {
         // Required empty public constructor
@@ -56,20 +54,12 @@ public class NowPlayingFragment extends Fragment {
         initView();
 
         if (savedInstanceState != null) {
-            List<Result> list;
-            data = savedInstanceState.getParcelableArrayList("now_playing");
-
-
-            if (data == null) {
-                getNowPlaying();
-            }else{
-                moreNowPlayingAdapter = new MoreNowPlayingAdapter(getActivity());
-                rvMoreNowPlaying.setAdapter(moreNowPlayingAdapter);
-            }
-
+            movieList = savedInstanceState.getParcelableArrayList("now_playing");
+            moreNowPlayingAdapter = new MoreNowPlayingAdapter(getActivity());
+            moreNowPlayingAdapter.setMovieItems(NowPlayingFragment.this.movieList);
+            rvMoreNowPlaying.setAdapter(moreNowPlayingAdapter);
         } else {
             getNowPlaying();
-
         }
 
         return view;
@@ -79,10 +69,10 @@ public class NowPlayingFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        if (data == null) {
+        if (movieList == null) {
             getNowPlaying();
         }else{
-            outState.putParcelableArrayList("now_playing", new ArrayList<>(data));
+            outState.putParcelableArrayList("now_playing", new ArrayList<>(movieList));
         }
     }
 
@@ -108,8 +98,6 @@ public class NowPlayingFragment extends Fragment {
 
                     Log.i(TAG, "onResponse: " + "get title : " + result.getTitle());
                 }
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                rvMoreNowPlaying.setLayoutManager(linearLayoutManager);
                 moreNowPlayingAdapter = new MoreNowPlayingAdapter(getActivity());
                 moreNowPlayingAdapter.setMovieItems(NowPlayingFragment.this.movieList);
                 rvMoreNowPlaying.setAdapter(moreNowPlayingAdapter);
