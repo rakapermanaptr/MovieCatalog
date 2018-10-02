@@ -11,10 +11,6 @@ import android.widget.Toast;
 
 import com.example.rakapermanaputra.moviewcatalog.AppPreference;
 import com.example.rakapermanaputra.moviewcatalog.R;
-import com.example.rakapermanaputra.moviewcatalog.adapter.MoreNowPlayingAdapter;
-import com.example.rakapermanaputra.moviewcatalog.adapter.MorePopularAdapter;
-import com.example.rakapermanaputra.moviewcatalog.fragment.NowPlayingFragment;
-import com.example.rakapermanaputra.moviewcatalog.fragment.PopularFragment;
 import com.example.rakapermanaputra.moviewcatalog.model.MovieItems;
 import com.example.rakapermanaputra.moviewcatalog.model.Result;
 import com.example.rakapermanaputra.moviewcatalog.network.ApiService;
@@ -23,8 +19,7 @@ import com.example.rakapermanaputra.moviewcatalog.reminder.DailyReminder;
 import com.example.rakapermanaputra.moviewcatalog.reminder.UpcomingReminder;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -45,8 +40,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
     private DailyReminder dailyReminder;
-    private UpcomingReminder upcomingReminder;
-    UpcomingReminder alarmReleaseReceiver = new UpcomingReminder();
+    UpcomingReminder upcomingReminder;
     private boolean isUpcoming, isDaily;
     private AppPreference appPreference;
 
@@ -133,11 +127,9 @@ public class SettingActivity extends AppCompatActivity {
 
                 for (int i = 0; i < movieList.size(); i++) {
                     Result result = movieList.get(i);
-
-                    Log.d("TES ", "Release date : " +  result.getReleaseDate() + " " + result.getTitle());
-
                     if (result.getReleaseDate().equals(now)) {
-                        alarmReleaseReceiver.setReleaseReminderAlarm(getApplicationContext(), result.getTitle());
+                        upcomingReminder.setReleaseReminderAlarm(getApplicationContext(), result.getTitle());
+
                     }
 
                 }

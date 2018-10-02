@@ -60,6 +60,11 @@
             android:enabled="true"
             android:exported="false" />
 
+        <receiver
+            android:name=".reminder.UpcomingReminder"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity android:name=".activity.SettingActivity"></activity>
     </application>
 

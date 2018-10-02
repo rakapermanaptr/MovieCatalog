@@ -179,9 +179,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             Toast.makeText(this, R.string.share, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_setting) {
-            Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.action_settings, Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, SettingActivity.class));
-            actionBarTitle = "Setting Notification";
+            actionBarTitle = getString(R.string.setting_notif);
         }
 
         if (fragment != null) {

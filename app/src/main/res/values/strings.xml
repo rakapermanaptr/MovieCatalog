@@ -45,4 +45,6 @@
     <string name="favorite">Favorite</string>
     <string name="upcoming_reminder_msg">%s Release</string>
     <string name="msg_daily_reminder">hello check CatalogMovie, Lets go</string>
+    <string name="setting">Setting</string>
+    <string name="setting_notif">Setting Notification</string>
 </resources>
