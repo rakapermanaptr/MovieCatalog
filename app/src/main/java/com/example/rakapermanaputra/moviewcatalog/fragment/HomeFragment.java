@@ -235,7 +235,7 @@ public class HomeFragment extends Fragment {
 
     private void getUpcoming() {
         ApiService service = RetrofitClientInstance.retrofit().create(ApiService.class);
-        Call<MovieItems> call = service.getPopular();
+        Call<MovieItems> call = service.getUpcoming();
         call.enqueue(new Callback<MovieItems>() {
             @Override
             public void onResponse(Call<MovieItems> call, Response<MovieItems> response) {
